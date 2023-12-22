@@ -16,7 +16,7 @@ const Banner = () => {
 <p className="text-lg text-black mt-3">Simplify your workflow, collaborate effortlessly, and achieve your goals with our intuitive task management platform. Sign up for free and experience the power of TaskTraverse today!</p>
 
 
-<button className="btn bg-blue-500 hover:bg-blue-600 text-white mt-4">Get Started</button>
+<button className="btn bg-blue-500 hover:bg-blue-600 text-white mt-4"> Let's Explore </button>
 
 
 
