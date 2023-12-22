@@ -2,13 +2,13 @@
 
 const Banner = () => {
     return (
-        <div className="h-vh">
+        <div className="">
 
          
          
 
 
-         <div className="card lg:card-side mt-5 bg-base-100 shadow-xl ">
+         <div className="card h-vh lg:card-side mt-5 bg-base-100 shadow-xl ">
   <figure><img src="https://i.ibb.co/n7Xq2Nb/pngtree-business-team-banner-task-management-image-1374989.jpg" alt="Album"/></figure>
   <div className="card-body">
     
