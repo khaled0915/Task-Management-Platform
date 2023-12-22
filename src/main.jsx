@@ -11,6 +11,9 @@ import Main from './Layout/Main';
 import Home from './Pages/Home/Home';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import Contact from './Pages/Contact/Contact';
+import Login from './Pages/Login/Login';
+import SignUp from './Pages/SignUp/SignUp';
+import AuthProvider from './provider/AuthProvider';
 
 
 
@@ -32,6 +35,14 @@ const router = createBrowserRouter([
     {
       path : '/contact' ,
       element : <Contact></Contact>
+    },
+    {
+      path : '/login' ,
+      element : <Login></Login>
+    },
+    {
+      path : '/signUp' ,
+      element : <SignUp></SignUp>
     }
   
   
@@ -45,8 +56,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <div className='max-w-screen-xl mx-auto'>
+  <AuthProvider>
+  <div className='max-w-screen-xl mx-auto'>
     <RouterProvider router={router} />
     </div>
+  </AuthProvider>
   </React.StrictMode>,
 )
