@@ -14,6 +14,7 @@ import Contact from './Pages/Contact/Contact';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import AuthProvider from './provider/AuthProvider';
+import Dashboard from './Layout/Dashboard';
 
 
 
@@ -47,7 +48,34 @@ const router = createBrowserRouter([
   
   
   ]
+
+
   },
+
+  {
+
+    path : 'dashboard' , 
+    element : <Dashboard></Dashboard> ,
+    errorElement : <ErrorPage></ErrorPage>,
+    children : [
+
+
+      
+
+
+
+
+    ]
+
+
+
+  }
+
+
+
+
+
+
 ]);
 
 

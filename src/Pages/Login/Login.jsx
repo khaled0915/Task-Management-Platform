@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Result } from "postcss";
+import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 
 const Login = () => {
@@ -28,9 +30,23 @@ const Login = () => {
         Login(email , password)
         .then(result =>{
             console.log(result);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "login successful",
+                showConfirmButton: false,
+                timer: 1500
+              });
         })
         .catch(error =>{
             console.log(error);
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "login failed",
+                showConfirmButton: false,
+                timer: 1500
+              });
 
         })
 
@@ -75,6 +91,11 @@ const Login = () => {
             Log In
           </button>
         </form>
+
+        <p className="mt-5 font-bold text-center text-teal-700"> or , singUp with Google </p>
+
+
+          <SocialLogin>  </SocialLogin>
 
         <p className="mt-5 font-bold text-center"> New Here ?  </p> 
         <Link  to='/signUp'> <button className="btn  btn-link font-bold text-xl"> sign Up </button>  </Link>

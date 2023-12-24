@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 
 
@@ -32,6 +34,13 @@ const SignUp = () => {
         createUser( email , password )
         .then( result => {
             console.log(result);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your registration has been saved",
+                showConfirmButton: false,
+                timer: 1500
+              });
 
         })
         .catch(error =>{
@@ -106,6 +115,11 @@ const SignUp = () => {
           >
             Sign Up
           </button>
+
+          <p className="mt-5 font-bold text-center text-teal-700"> or , singUp with Google </p>
+
+
+          <SocialLogin>  </SocialLogin>
         </form>
 
 
