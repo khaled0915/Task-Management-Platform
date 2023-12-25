@@ -1,17 +1,38 @@
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const AddTask = () => {
+
+
+    const axiosPublic = useAxiosPublic();
 
 
 
 
     const {register , handleSubmit , reset} = useForm()
 
-    const onSubmit = (data) => {
+    const onSubmit =  (data) => {
         
         console.log(data)
 
-        reset();
+        axiosPublic.post('/task' , data)
+        .then(res =>{
+            if(res.data.insertedId){
+                console.log('task added to the db');
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your task has been added ",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  reset();
+
+            }
+        })
+
+        
 
     }
 
