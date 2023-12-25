@@ -18,6 +18,7 @@ import Dashboard from './Layout/Dashboard';
 
 import AddTask from './Pages/Dashboard/AddTask/AddTask';
 import AddedTask from './Pages/Dashboard/addedTask/addedTask';
+import PrivateRoutes from './PrivateRoutes/PrivateRoutes';
 
 
 
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
   {
 
     path : 'dashboard' , 
-    element : <Dashboard></Dashboard> ,
+    element : <PrivateRoutes> <Dashboard></Dashboard> </PrivateRoutes> ,
     errorElement : <ErrorPage></ErrorPage>,
     children : [
 

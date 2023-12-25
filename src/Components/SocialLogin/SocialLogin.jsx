@@ -3,23 +3,46 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SocialLogin = () => {
 
 
     const {googleSignIn} = useContext(AuthContext)
 
+    const navigate =  useNavigate();
+
+
+    const axiosPublic = useAxiosPublic();
+
     const handleGoogleSignIn = () =>{
         googleSignIn()
         .then( result =>{
             console.log(result.user);
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: " login with google successful ",
-                showConfirmButton: false,
-                timer: 1500
-              });
+
+            const userInfo = {
+                email : result.user?.email ,
+                name : result.user?.displayName 
+            }
+
+            axiosPublic.post('/users' , userInfo)
+            .then(res => {
+                console.log(res.data);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: " login with google successful ",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  navigate('/dashboard/addTask')
+                
+            })
+
+
+            
+            
 
         })
         .catch(error =>{

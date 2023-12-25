@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 
@@ -11,6 +12,10 @@ const SignUp = () => {
 
 
     const {createUser} = useContext(AuthContext)
+
+    const navigate = useNavigate();
+
+    const axiosPublic = useAxiosPublic();
 
 
     const handleSignUp = e =>{
@@ -26,28 +31,43 @@ const SignUp = () => {
 
 
         const userInfo = {
-            name , email , password
+            name , email 
         }
 
         console.log(userInfo);
 
         createUser( email , password )
         .then( result => {
-            console.log(result);
-            Swal.fire({
+
+          const loggedUser = result.user ;
+
+          console.log(loggedUser);
+
+          axiosPublic.post('/users' , userInfo)
+          .then(res=>{
+            if(res.data.insertId){
+              console.log('user added in the db');
+              
+              Swal.fire({
                 position: "top-end",
                 icon: "success",
                 title: "Your registration has been saved",
                 showConfirmButton: false,
                 timer: 1500
               });
+              navigate('/dashboard/addTask')
+            }
+            form.reset();
+          })
+           
+           
 
         })
         .catch(error =>{
             console.log(error);
 
         })
-        form.reset();
+       
         
 
     }
