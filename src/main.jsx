@@ -16,6 +16,9 @@ import SignUp from './Pages/SignUp/SignUp';
 import AuthProvider from './provider/AuthProvider';
 import Dashboard from './Layout/Dashboard';
 
+import AddTask from './Pages/Dashboard/AddTask/AddTask';
+import AddedTask from './Pages/Dashboard/addedTask/addedTask';
+
 
 
 const router = createBrowserRouter([
@@ -51,7 +54,7 @@ const router = createBrowserRouter([
 
 
   },
-
+ 
   {
 
     path : 'dashboard' , 
@@ -60,7 +63,14 @@ const router = createBrowserRouter([
     children : [
 
 
-      
+      {
+        path : 'addTask' ,
+        element : <AddTask></AddTask>
+      },
+      {
+        path : 'addedTask',
+        element :<AddedTask></AddedTask>
+      }
 
 
 
