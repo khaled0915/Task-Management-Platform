@@ -1,11 +1,19 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
+import useTask from "../../../hooks/useTask";
 
 const AddTask = () => {
 
 
     const axiosPublic = useAxiosPublic();
+
+  
+
+    
+
 
 
 
@@ -13,10 +21,14 @@ const AddTask = () => {
     const {register , handleSubmit , reset} = useForm()
 
     const onSubmit =  (data) => {
-        
-        console.log(data)
 
-        axiosPublic.post('/task' , data)
+
+      
+        
+           
+
+
+            axiosPublic.post('/task' , data)
         .then(res =>{
             if(res.data.insertedId){
                 console.log('task added to the db');
@@ -31,6 +43,19 @@ const AddTask = () => {
 
             }
         })
+
+
+
+
+
+        
+
+
+        
+        console.log(data)
+
+
+        
 
         
 
@@ -51,14 +76,6 @@ const AddTask = () => {
         <div className="mt-10 mr-5 ml-5 bg-gray-200">
 
             <h3 className=" font-bold text-center  text-3xl mb-10 underline text-sky-400"> here you can add your task </h3>
-
-
-            
-
-
-
-
-
 
 
      <form onSubmit={handleSubmit(onSubmit)}   className="card-body">

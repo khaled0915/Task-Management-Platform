@@ -20,6 +20,14 @@ import AddTask from './Pages/Dashboard/AddTask/AddTask';
 import AddedTask from './Pages/Dashboard/addedTask/addedTask';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes';
 
+import {
+  QueryClient,
+  QueryClientProvider,
+  
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+
 
 
 const router = createBrowserRouter([
@@ -71,6 +79,7 @@ const router = createBrowserRouter([
       {
         path : 'addedTask',
         element :<AddedTask></AddedTask>
+      
       }
 
 
@@ -96,9 +105,19 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
   <AuthProvider>
+
+
+  <QueryClientProvider client={queryClient}>
+
   <div className='max-w-screen-xl mx-auto'>
     <RouterProvider router={router} />
     </div>
+    
+    
+    
+     </QueryClientProvider>
+
+
   </AuthProvider>
   </React.StrictMode>,
 )
